@@ -3,6 +3,12 @@ import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { prisma } from "../lib/prisma";
 
+/**
+ * Confirm a participant by participant ID.
+ *
+ * @param {FastifyInstance} app - The Fastify instance.
+ * @return {Promise<void>} - A promise that resolves when the participant is confirmed.
+ */
 export async function confirmParticipant(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get("/participants/:participantId/confirm", {
     schema: {
