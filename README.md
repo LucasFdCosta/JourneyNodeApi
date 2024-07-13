@@ -1,0 +1,2 @@
+# The NodeJS version of [Journey](https://github.com/LucasFdCosta/Journey/tree/master/api) application's API
+I created this project to make a NodeJS version of my other application's API that I created using .NET
