@@ -1,16 +1,16 @@
 import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
-import z from "zod";
-import { prisma } from "../lib/prisma";
-import { getMailClient } from "../lib/mail";
-import { dayjs } from "../lib/dayjs";
 import nodemailer from "nodemailer";
+import z from "zod";
+import { dayjs } from "../lib/dayjs";
+import { getMailClient } from "../lib/mail";
+import { prisma } from "../lib/prisma";
 
 /**
  * Confirm a trip by trip ID.
  *
  * @param {FastifyInstance} app - The Fastify instance.
- * @return {Promise<{ tripId: string }>} The ID of the confirmed trip.
+ * @return {Promise<void>} - A promise that resolves when the trip is confirmed.
  */
 export async function confirmTrip(app: FastifyInstance) {
   app.withTypeProvider<ZodTypeProvider>().get("/trips/:tripId/confirm", {
@@ -58,7 +58,7 @@ export async function confirmTrip(app: FastifyInstance) {
     const mail = await getMailClient();
 
     await Promise.all(trip.participants.map(async (participant) => {
-      const confirmationLink = `http://localhost:3333/trips/${trip.id}/confirm/${participant.id}`;
+      const confirmationLink = `http://localhost:3333/participants/${participant.id}/confirm`;
 
       const message = await mail.sendMail({
         from: {
