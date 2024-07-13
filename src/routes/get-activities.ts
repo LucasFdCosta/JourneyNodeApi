@@ -4,7 +4,6 @@ import z from "zod";
 import { dayjs } from "../lib/dayjs";
 import { prisma } from "../lib/prisma";
 
-
 /**
  * Retrieves activities for a specific trip.
  *
