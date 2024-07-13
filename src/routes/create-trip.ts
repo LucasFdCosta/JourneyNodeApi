@@ -2,15 +2,9 @@ import { FastifyInstance } from "fastify";
 import { ZodTypeProvider } from "fastify-type-provider-zod";
 import z from "zod";
 import { prisma } from "../lib/prisma";
-import dayjs from "dayjs";
-// import "dayjs/locale/pt-br";
-import localizedFormat from "dayjs/plugin/localizedFormat";
 import { getMailClient } from "../lib/mail";
 import nodemailer from "nodemailer";
-
-// dayjs.locale("pt-br");
-dayjs.extend(localizedFormat);
-
+import { dayjs } from "../lib/dayjs";
 
 /**
  * Creates a new trip.
@@ -62,8 +56,8 @@ export async function createTrip(app: FastifyInstance) {
       }
     });
 
-    const formattedStartDate = dayjs(trip.starts_at).format("LL");
-    const formattedEndDate = dayjs(trip.ends_at).format("LL");
+    const formattedStartDate = dayjs(starts_at).format("LL");
+    const formattedEndDate = dayjs(ends_at).format("LL");
 
     const confirmationLink = `http://localhost:3333/trips/${trip.id}/confirm`;
 
@@ -78,13 +72,13 @@ export async function createTrip(app: FastifyInstance) {
         name: owner_name,
         address: owner_email
       },
-      subject: `Confirm your trip to ${trip.destination} on ${formattedStartDate}`,
+      subject: `Confirm your trip to ${destination} on ${formattedStartDate}`,
       html: `
       <div style="font-family: sans-serif font-size: 16px line-height: 1.6;">
-        <p>Confirm Your Trip to <strong>${trip.destination}</strong> from <strong>${formattedStartDate}</strong> to <strong>${formattedEndDate}</strong></p>
+        <p>Confirm Your Trip to <strong>${destination}</strong> from <strong>${formattedStartDate}</strong> to <strong>${formattedEndDate}</strong></p>
         <p></p>
         <p>Hi ${owner_name},</p>
-        <p>We are waiting for your confirmation to join the trip to ${trip.destination}. Please confirm your participation at your earliest convenience.</p>
+        <p>We are waiting for your confirmation to join the trip to ${destination}. Please confirm your participation at your earliest convenience.</p>
         <p></p>
         <a href="${confirmationLink}">Confirm trip</a>
         <p></p>
