@@ -6,12 +6,6 @@ I created this project to make a NodeJS version of my other application's API th
 - [NPM](https://www.npmjs.com/)
 - (Optional) [DB Browser (SQLite)](https://sqlitebrowser.org/dl/) - to open the database file
 
-## Viewing database file
-You can either install [DB Browser (SQLite)](https://sqlitebrowser.org/dl/) to open the database file or run the command below in the app folder:
-```
-npx prisma studio
-```
-
 ### Create a .env file with some environment variables
 
 ```
@@ -24,6 +18,12 @@ PORT="{YourPortUrlGoesHere}"
 ### Install dependencies
 ```
 npm install
+```
+
+### Viewing database file
+You can either install [DB Browser (SQLite)](https://sqlitebrowser.org/dl/) to open the database file or run the command below in the app folder:
+```
+npx prisma studio
 ```
 
 ## API Documentation
