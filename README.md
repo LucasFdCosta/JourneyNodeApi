@@ -11,7 +11,7 @@ I created this project to make a NodeJS version of my other application's API th
 ```
 DATABASE_URL="file:{YourPathToDbFileGoesHere}"
 API_BASE_URL="{YourApiBaseUrlGoesHere}"
-WEB_BASE_URL="YourWebBaseUrlGoesHere"
+WEB_BASE_URL="{YourWebBaseUrlGoesHere}"
 PORT="{YourPortUrlGoesHere}"
 ```
 
