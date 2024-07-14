@@ -2,18 +2,20 @@
 I created this project to make a NodeJS version of my other application's API that I created using .NET
 
 ## Prerequisites
-### Create a .env file with the environment variable containing the path to your SQLite DB file 
+- [Node.js](https://nodejs.org/en/)
+- [NPM](https://www.npmjs.com/)
+- (Optional) [DB Browser (SQLite)](https://sqlitebrowser.org/dl/)
+
+### Create a .env file with some environment variables
 
 ```
 DATABASE_URL="file:{YourPathToDbFileGoesHere}"
+API_BASE_URL="{YourApiBaseUrlGoesHere}"
+WEB_BASE_URL="YourWebBaseUrlGoesHere"
+PORT="{YourPortUrlGoesHere}"
 ```
 
 ### Install dependencies
 ```
 npm install
-```
-
-### Run application in dev mode
-```
-npm run dev
 ```
